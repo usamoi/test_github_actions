@@ -11,7 +11,6 @@ pub fn marker() -> usize {
     0
 }
 
-#[test]
-fn test_marker() {
+fn main() {
     assert_eq!(marker(), 0_usize);
 }
