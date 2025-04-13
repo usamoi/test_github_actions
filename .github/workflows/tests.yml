@@ -1,0 +1,21 @@
+name: Tests
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  macos_test:
+    name: macos_test
+    runs-on: ${{ matrix.runner }}
+
+    strategy:
+      matrix:
+        runner: ["macos-13", "macos-14"]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run
+        run: cargo run
