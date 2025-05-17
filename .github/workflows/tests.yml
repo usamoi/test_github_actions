@@ -6,26 +6,6 @@ on:
       - main
 
 jobs:
-  rustup_test_x86_64:
-    name: rustup_test_x86_64
-    runs-on: "ubuntu-22.04"
-
-    strategy:
-      matrix:
-        alpha: [0, 1, 2, 3]
-        beta: [0, 1, 2, 3]
-
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Run
-        run: |
-          env
-          cat ~/.rustup/settings.toml
-          sha512sum ~/.cargo/bin/rustup
-
-          cargo clippy
-
   rustup_test_aarch64:
     name: rustup_test_aarch64
     runs-on: "ubuntu-22.04-arm"
@@ -43,5 +23,7 @@ jobs:
           env
           cat ~/.rustup/settings.toml
           sha512sum ~/.cargo/bin/rustup
+
+          rustup -V
 
           cargo clippy
