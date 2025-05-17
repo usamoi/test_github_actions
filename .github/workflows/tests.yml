@@ -6,14 +6,9 @@ on:
       - main
 
 jobs:
-  rustup_test_aarch64:
-    name: rustup_test_aarch64
+  rustup_test:
+    name: rustup_test
     runs-on: "ubuntu-22.04-arm"
-
-    strategy:
-      matrix:
-        alpha: [0, 1, 2, 3]
-        beta: [0, 1, 2, 3]
 
     steps:
       - uses: actions/checkout@v4
@@ -26,4 +21,4 @@ jobs:
 
           rustup -V
 
-          cargo clippy
+          rustup --verbose toolchain install nightly-2025-04-25
