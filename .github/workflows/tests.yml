@@ -10,11 +10,6 @@ jobs:
     name: rustup_test_aarch64
     runs-on: "ubuntu-22.04-arm"
 
-    strategy:
-      matrix:
-        alpha: [0, 1, 2, 3]
-        beta: [0, 1, 2, 3]
-
     steps:
       - uses: actions/checkout@v4
 
@@ -24,6 +19,7 @@ jobs:
           cat ~/.rustup/settings.toml
           sha512sum ~/.cargo/bin/rustup
 
+          rustup self update
           rustup -V
 
           cargo clippy
