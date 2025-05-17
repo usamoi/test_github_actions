@@ -6,18 +6,22 @@ on:
       - main
 
 jobs:
-  macos_test:
-    name: macos_test
-    runs-on: ${{ matrix.runner }}
+  rustup_test:
+    name: rustup_test
+    runs-on: "ubuntu-22.04"
 
     strategy:
       matrix:
-        runner: ["macos-13", "macos-14"]
+        alpha: [0, 1, 2, 3]
+        beta: [0, 1, 2, 3]
 
     steps:
       - uses: actions/checkout@v4
 
       - name: Run
         run: |
-          cargo install cargo-bisect-rustc --features git2/vendored-openssl
-          cargo bisect-rustc
+          env
+          cat ~/.rustup/settings.toml
+          sha512sum ~/.cargo/bin/rustup
+
+          cargo clippy
