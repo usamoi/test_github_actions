@@ -6,20 +6,13 @@ on:
       - main
 
 jobs:
-  rustup_test_aarch64:
-    name: rustup_test_aarch64
-    runs-on: "ubuntu-22.04-arm"
+  c:
+    name: c
+    runs-on: "macos-latest"
 
     steps:
       - uses: actions/checkout@v4
 
       - name: Run
         run: |
-          env
-          cat ~/.rustup/settings.toml
-          sha512sum ~/.cargo/bin/rustup
-
-          rustup self update
-          rustup -V
-
-          cargo clippy
+          env -u IPHONEOS_DEPLOYMENT_TARGET LC_ALL="C" "clang" "-O3" "-ffunction-sections" "-fdata-sections" "-fPIC" "-gdwarf-2" "-fno-omit-frame-pointer" "--target=arm64-apple-macosx" "-mmacosx-version-min=15.2" "-Wall" "-Wextra" "-c" "./cshim/aarch64.c"
