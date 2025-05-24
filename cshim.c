@@ -12,18 +12,6 @@
 //
 // Copyright (c) 2025 TensorChord Inc.
 
-#if defined(__clang__)
-#if !(__clang_major__ >= 16)
-#error "Clang version must be at least 16."
-#endif
-#elif defined(__GNUC__)
-#if !(__GNUC__ >= 14)
-#error "GCC version must be at least 14."
-#endif
-#else
-#error "This file requires Clang or GCC."
-#endif
-
 #include <arm_neon.h>
 #include <arm_sve.h>
 #include <stddef.h>
