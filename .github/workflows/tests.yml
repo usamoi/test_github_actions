@@ -15,4 +15,4 @@ jobs:
 
       - name: Run
         run: |
-          env -u IPHONEOS_DEPLOYMENT_TARGET LC_ALL="C" "clang" "-O3" "-ffunction-sections" "-fdata-sections" "-fPIC" "-gdwarf-2" "-fno-omit-frame-pointer" "--target=arm64-apple-macosx" "-mmacosx-version-min=15.2" "-Wall" "-Wextra" "-c" "./cshim/aarch64.c"
+          env -u IPHONEOS_DEPLOYMENT_TARGET LC_ALL="C" "clang" "-O3" "-ffunction-sections" "-fdata-sections" "-fPIC" "-gdwarf-2" "-fno-omit-frame-pointer" "--target=arm64-apple-macosx" "-mmacosx-version-min=15.2" "-Wall" "-Wextra" "-c" "./cshim.c"
